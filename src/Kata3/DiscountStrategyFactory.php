@@ -13,10 +13,6 @@ class DiscountStrategyFactory
     {
         $strategy = new DiscountStrategy();
 
-        if ($isTuesday) {
-            return $strategy->setStrategy(new FreeShippingCalculator());
-        }
-
-        return $strategy->setStrategy(new PriceCalculator());
+        return $isTuesday ? $strategy->setStrategy(new FreeShippingCalculator()) : $strategy->setStrategy(new PriceCalculator());
     }
 }
