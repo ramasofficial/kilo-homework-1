@@ -21,7 +21,7 @@ class DemoRun
         return (new Shipping(8, new Discount(20, new Price(100))))->cost();
     }
 
-    public function kata2(PriceCalculatorInterface $calculator)
+    public function kata2(PriceCalculatorInterface $calculator): float
     {
         return $calculator->calculate(100, 20, 8);
     }
