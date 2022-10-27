@@ -1,10 +1,11 @@
 <?php
 
+use App\DemoRun;
 use App\Kata2\FreeShippingCalculator;
 
 require_once "vendor/autoload.php";
 
-$demo = new App\DemoRun();
+$demo = new DemoRun();
 echo $demo->kata1();
 echo PHP_EOL;
 echo $demo->kata2(new FreeShippingCalculator());
