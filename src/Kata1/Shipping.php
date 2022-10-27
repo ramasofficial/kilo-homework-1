@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace App\Kata1;
 
-class Shipping implements CostInterface
+class Shipping extends AbstractCostDecorator
 {
-    public function cost()
+    public function __construct(private float $shippingPrice, CostInterface $cost)
     {
-        // TODO: Implement cost() method.
+        parent::__construct($cost);
+    }
+
+    public function cost(): float
+    {
+        return $this->cost->cost() + $this->shippingPrice;
     }
 }

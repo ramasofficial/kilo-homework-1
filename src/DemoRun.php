@@ -8,49 +8,32 @@ use App\Kata1\Discount;
 use App\Kata1\Price;
 use App\Kata1\Shipping;
 use App\Kata2\PriceCalculatorInterface;
+use App\Kata3\DiscountStrategyFactory;
+use App\Kata4\DpdShippingAdapter;
+use App\Kata4\DpdShippingProvider;
 
 class DemoRun
 {
     private bool $isTuesday = false;
 
-    public function kata1()
+    public function kata1(): float
     {
-        // shipping = 8;
-        // discount = 20;
-        // new Price(100);
-
-        //change me!!!
-        return 88;
+        return (new Shipping(8, new Discount(20, new Price(100))))->cost();
     }
 
     public function kata2(PriceCalculatorInterface $calculator)
     {
-        // shipping = 8;
-        // discount = 20;
-        // new Price(100);
-
-        //oh, no! what a crap, change me now!
-        return 88;
+        return $calculator->calculate(100, 20, 8);
     }
 
-    public function kata3()
+    public function kata3(): float
     {
-        // shipping = 8;
-        // discount = 20;
-        // new Price(100);
-
-        //OMG ¯\_(ツ)_/¯ , don't be lazy, change me
-        return 80;
+        return (new DiscountStrategyFactory())->build($this->isTuesday())->execute(100, 20, 8);
     }
 
-    public function kata4()
+    public function kata4(): float
     {
-        // shipping = 8;
-        // discount = 20;
-        // new Price(100);
-
-        //OMG ¯\_(ツ)_/¯ , don't be lazy, change me
-        return 84;
+        return (new DpdShippingAdapter(new DpdShippingProvider(), new Discount(20, new Price(100))))->cost();
     }
 
     /**

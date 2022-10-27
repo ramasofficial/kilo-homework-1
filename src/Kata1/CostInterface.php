@@ -6,5 +6,5 @@ namespace App\Kata1;
 
 interface CostInterface
 {
-    public function cost();
+    public function cost(): float;
 }

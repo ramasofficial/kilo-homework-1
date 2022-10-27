@@ -7,8 +7,9 @@ namespace Test\Unit;
 use App\DemoRun;
 use App\Kata2\FreeShippingCalculator;
 use App\Kata2\PriceCalculator;
+use PHPUnit\Framework\TestCase;
 
-class DemoRunTest extends \PHPUnit\Framework\TestCase
+class DemoRunTest extends TestCase
 {
     protected DemoRun $runner;
 

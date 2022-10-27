@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace App\Kata1;
 
-class Discount implements CostInterface
+class Discount extends AbstractCostDecorator
 {
-    public function cost()
+    public function __construct(private float $discount, CostInterface $cost)
     {
-        // TODO: Implement cost() method.
+        parent::__construct($cost);
+    }
+
+    public function cost(): float
+    {
+        return ($this->cost->cost() * (1 - $this->discount / $this->cost->cost()));
     }
 }
